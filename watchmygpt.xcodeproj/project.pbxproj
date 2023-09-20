@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172112ABB8BCB00C74A43 /* NewChat.swift */; };
+		8A5172162ABB8EA600C74A43 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172152ABB8EA600C74A43 /* Menu.swift */; };
 		8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AE9420B2ABB2DB7000B8961 /* watchmygptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */; };
 		8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420C2ABB2DB7000B8961 /* ContentView.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A5172112ABB8BCB00C74A43 /* NewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChat.swift; sourceTree = "<group>"; };
+		8A5172152ABB8EA600C74A43 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmygpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMyGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchmygptApp.swift; sourceTree = "<group>"; };
@@ -58,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A5172102ABB8BA100C74A43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A5172112ABB8BCB00C74A43 /* NewChat.swift */,
+				8A5172152ABB8EA600C74A43 /* Menu.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8AE941F82ABB2DB6000B8961 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +93,7 @@
 			children = (
 				8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */,
 				8AE9420C2ABB2DB7000B8961 /* ContentView.swift */,
+				8A5172102ABB8BA100C74A43 /* Views */,
 				8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */,
 				8AE942102ABB2DB7000B8961 /* Preview Content */,
 			);
@@ -193,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */,
+				8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */,
+				8A5172162ABB8EA600C74A43 /* Menu.swift in Sources */,
 				8AE9420B2ABB2DB7000B8961 /* watchmygptApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
