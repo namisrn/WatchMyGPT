@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8AE942062ABB2DB7000B8961 /* watchmygpt Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* watchmygpt Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AE9420B2ABB2DB7000B8961 /* watchmygptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */; };
 		8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420C2ABB2DB7000B8961 /* ContentView.swift */; };
 		8AE9420F2ABB2DB7000B8961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				8AE942062ABB2DB7000B8961 /* watchmygpt Watch App.app in Embed Watch Content */,
+				8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmygpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AE942052ABB2DB7000B8961 /* watchmygpt Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchmygpt Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMyGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchmygptApp.swift; sourceTree = "<group>"; };
 		8AE9420C2ABB2DB7000B8961 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */,
-				8AE942052ABB2DB7000B8961 /* watchmygpt Watch App.app */,
+				8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 			);
 			name = "watchmygpt Watch App";
 			productName = "watchmygpt Watch App";
-			productReference = 8AE942052ABB2DB7000B8961 /* watchmygpt Watch App.app */;
+			productReference = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -327,22 +327,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"watchmygpt Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = watchmygpt;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WatchMyGPT;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -357,22 +357,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"watchmygpt Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = watchmygpt;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WatchMyGPT;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
