@@ -63,27 +63,26 @@ struct NewChat: View {
             .containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("New Chat")
 
-            /*
-             .toolbar{
-             ToolbarItem(placement: .topBarTrailing){
-             Button(action: {
-             // Aktion für Detailansicht
-             }) {
-             Image(systemName: "ellipsis") // Beispiel für ein System-Icon
-             }
-             }
-             }
-             */
-            
         }
         
     }
     
 
 func sendMessage(_ message: String) {
+    
+    func getAPIKey() -> String? {
+        var apiKey: String?
+        if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                apiKey = dict["API_KEY"] as? String
+            }
+        }
+        return apiKey
+    }
+    
     // Konfiguration für die OpenAI API
     let urlString = "https://api.openai.com/v1/chat/completions"
-    let apiKey = "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"  // Deinen echten API-Schlüssel einfügen
+    let apiKey = getAPIKey() ?? ""
 
     // URLRequest konfigurieren
     var request = URLRequest(url: URL(string: urlString)!)
