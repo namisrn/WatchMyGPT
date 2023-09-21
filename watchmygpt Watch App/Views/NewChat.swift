@@ -16,7 +16,7 @@ struct NewChat: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    Spacer(minLength: 30) // Platz am oberen Rand
+                    Spacer(minLength: 50) // Platz am oberen Rand
                     
                     ScrollView {
                         VStack(spacing: 10) { // Abstand zwischen den Nachrichten
@@ -61,6 +61,8 @@ struct NewChat: View {
             }
             .edgesIgnoringSafeArea(.all)
             .containerBackground(.blue.gradient, for: .navigation)
+            .navigationTitle("New Chat")
+
             /*
              .toolbar{
              ToolbarItem(placement: .topBarTrailing){

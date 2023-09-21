@@ -12,8 +12,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Menu()
-        //.containerBackground(.blue.gradient, for: .navigation)
-
     }
 }
 

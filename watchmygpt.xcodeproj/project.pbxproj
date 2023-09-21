@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172112ABB8BCB00C74A43 /* NewChat.swift */; };
 		8A5172162ABB8EA600C74A43 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172152ABB8EA600C74A43 /* Menu.swift */; };
+		8A5172182ABBF4BA00C74A43 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172172ABBF4BA00C74A43 /* Archive.swift */; };
 		8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AE9420B2ABB2DB7000B8961 /* watchmygptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */; };
 		8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420C2ABB2DB7000B8961 /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		8A5172112ABB8BCB00C74A43 /* NewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChat.swift; sourceTree = "<group>"; };
 		8A5172152ABB8EA600C74A43 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		8A5172172ABBF4BA00C74A43 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmygpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMyGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchmygptApp.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				8A5172112ABB8BCB00C74A43 /* NewChat.swift */,
 				8A5172152ABB8EA600C74A43 /* Menu.swift */,
+				8A5172172ABBF4BA00C74A43 /* Archive.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5172182ABBF4BA00C74A43 /* Archive.swift in Sources */,
 				8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */,
 				8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */,
 				8A5172162ABB8EA600C74A43 /* Menu.swift in Sources */,

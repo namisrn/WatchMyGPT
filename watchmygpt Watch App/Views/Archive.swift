@@ -9,7 +9,16 @@ import SwiftUI
 
 struct Archive: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            List{
+                Text("msg 01")
+                Text("msg 02")
+            }
+            .containerBackground(.blue.gradient, for: .navigation)
+
+        }
+        .navigationTitle("Archive")
+
     }
 }
 
