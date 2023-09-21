@@ -10,7 +10,7 @@ import SwiftUI
 struct NewChat: View {
     
     @State private var userInput: String = "" // Hier wird der Benutzereingabestring gespeichert
-    @State private var chatOutput: String = "Welcome to WatchMyGPT How can i help you?" // Hier wird die Chat-Ausgabe gespeichert
+    @State private var chatOutput: String = "" // Hier wird die Chat-Ausgabe gespeichert
 
     var body: some View {
         NavigationStack {
@@ -20,16 +20,26 @@ struct NewChat: View {
                     
                     ScrollView {
                         VStack(spacing: 10) { // Abstand zwischen den Nachrichten
+                            
+                            Text("Welcome to WatchMyGPT. How can i help you?")
+                                .padding()
+                            
                             ForEach(chatOutput.split(separator: "\n"), id: \.self) { message in
                                 if message.hasPrefix("GPT:") { // Überprüfen, ob es sich um eine "Response"-Nachricht handelt
                                     Text(message)
+                                        .multilineTextAlignment(.leading)
                                         .padding(10) // Innenraum-Padding für die "Response"
                                         .background(Color.gray.opacity(0.2)) // Hintergrundfarbe für die "Response"
                                         .cornerRadius(10) // Ecken der "Response" abrunden
-                                } else {
+                                } else if message.hasPrefix("You:") { // Überprüfen, ob es sich um eine Benutzernachricht handelt
                                     Text(message)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(10) // Innenraum-Padding für die Benutzernachricht
+                                        .background(Color.blue.opacity(0.5)) // Hintergrundfarbe für die Benutzernachricht
+                                        .cornerRadius(10) // Ecken der Benutzernachricht abrunden
                                 }
                             }
+
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }

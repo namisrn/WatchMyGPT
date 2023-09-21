@@ -1,5 +1,5 @@
 //
-//  Archive.swift
+//  Setting.swift
 //  watchmygpt Watch App
 //
 //  Created by Sasan Rafat Nami on 21.09.23.
@@ -7,21 +7,19 @@
 
 import SwiftUI
 
-struct Archive: View {
+struct Setting: View {
     var body: some View {
         NavigationStack{
             List{
-                Text("archive 01")
-                Text("archive 02")
+                Text("setting 01")
+                Text("setting 02")
             }
             .containerBackground(.blue.gradient, for: .navigation)
-            .navigationTitle("Archive")
+            .navigationTitle("Setting")
         }
-        
-
     }
 }
 
 #Preview {
-    Archive()
+    Setting()
 }

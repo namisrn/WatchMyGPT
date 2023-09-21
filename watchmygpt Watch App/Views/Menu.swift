@@ -23,6 +23,7 @@ struct Menu: View {
                             .fontWeight(.bold)
                             .padding()
                     }
+                    
 
                 }
                 NavigationLink(destination: Archive()) {
@@ -45,7 +46,7 @@ struct Menu: View {
                     }
 
                 }
-                NavigationLink(destination: Archive()) {
+                NavigationLink(destination: Setting()) {
                     VStack(alignment: .leading){
                         label:do {
                             Image(systemName: "gear")
@@ -67,19 +68,12 @@ struct Menu: View {
             }
             .navigationTitle("WatchMyGPT")
             .containerBackground(.blue.gradient, for: .navigation)
-            
+
         }
-    }
-}
 
-struct WorkoutView: View {
-    var body: some View {
-        Text("Tracking your workout here...")
-            .font(.title)
-            .padding()
     }
-}
 
+}
 
 
 #Preview {
