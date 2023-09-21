@@ -34,27 +34,23 @@ struct NewChat: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .padding() // Abstand zu den Rändern der VStack
-                    //.border(Color.red)
                     
                     HStack(spacing: 6) { // Abstand zwischen Textfeld und Button
                         TextField("Send a message...", text: $userInput)
-                        //.border(Color.red)
+
                         Button(action: {
                             sendMessage(userInput)
                         }) {
                             Image(systemName: "paperplane.fill")
                                 .font(Font.system(size: 25))
-                            //.border(Color.red)
                             
                         }
                         .clipShape(Circle()) // Button in Kreisform
                         .frame(width: 55)
-                        //.border(Color.orange)
                         
                     }
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 10)) // Innenraum-Padding für HStack
-                    //.background(Color.white.opacity(0.9)) // Hintergrundfarbe für den Innenraum der HStack
-                    //.border(Color.green)
+
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
