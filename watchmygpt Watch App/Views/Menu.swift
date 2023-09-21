@@ -68,6 +68,7 @@ struct Menu: View {
             }
             .navigationTitle("WatchMyGPT")
             .containerBackground(.blue.gradient, for: .navigation)
+            .listStyle(.carousel)
 
         }
 
