@@ -7,75 +7,59 @@
 
 import SwiftUI
 
-struct Menu: View {
-    var body: some View {
-        NavigationStack{
-            List {
-                NavigationLink(destination: NewChat()) {
-                    VStack(alignment: .leading){
-                        label:do {
-                            Image(systemName: "plus.bubble")
-                                .font(.system(size: 35))
-                                .padding(.top)
-                        }
-                        Text("New Chat")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .padding()
-                    }
-                    
-
-                }
-                NavigationLink(destination: Archive()) {
-                    VStack(alignment: .leading){
-                        label:do {
-                            Image(systemName: "archivebox")
-                                .font(.system(size: 35))
-                                .padding(.top)
-                        }
-                        Text("Archive")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .padding()
-                        Text("no func")
-                            .font(.subheadline)
-                            .fontWeight(.light)
-                            .padding(.leading)
-                            .foregroundColor(Color.red)
-
-                    }
-
-                }
-                NavigationLink(destination: Setting()) {
-                    VStack(alignment: .leading){
-                        label:do {
-                            Image(systemName: "gear")
-                                .font(.system(size: 35))
-                                .padding(.top)
-                        }
-                        Text("Setting")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .padding()
-                        Text("no func")
-                            .font(.subheadline)
-                            .fontWeight(.light)
-                            .padding(.leading)
-                            .foregroundColor(Color.red)
-                    }
-
-                }
-            }
-            .navigationTitle("WatchMyGPT")
-            .containerBackground(.blue.gradient, for: .navigation)
-            .listStyle(.carousel)
-
-        }
-
-    }
-
+// Definieren ein MenuItem-Modell
+struct MenuItem: Identifiable {
+    var id = UUID()
+    var title: String
+    var subtitle: String
+    var iconName: String
+    var destinationView: AnyView
 }
 
+// Erstellen ein Array mit den Menüeinträgen und den zugehörigen Views
+let menuItems: [MenuItem] = [
+    MenuItem(title: "New Chat", subtitle: "Start new Conversation", iconName: "plus.bubble", destinationView: AnyView(NewChat())),
+    MenuItem(title: "Archive", subtitle: "coming soon", iconName: "archivebox", destinationView: AnyView(Archive())),
+    MenuItem(title: "Settings", subtitle: "coming soon", iconName: "gear", destinationView: AnyView(Setting()))
+]
+
+
+
+struct Menu: View {
+    var body: some View {
+        
+        NavigationStack {
+            List(menuItems) { item in
+                NavigationLink(destination: item.destinationView) {
+                    
+                    VStack(alignment:.leading){
+                        Image(systemName: item.iconName)
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.blue)
+                        
+                        Spacer()
+                        
+                        Text(item.title)
+                            .font(.title3)
+                        
+                        Text(item.subtitle)
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+
+                        }
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+                    
+                    
+                }
+                .navigationTitle("WatchMyAI")
+                .containerBackground(.blue.gradient, for: .navigation)
+                
+            }
+            .listStyle(.carousel)
+        }
+        
+    }
 
 #Preview {
     Menu()
