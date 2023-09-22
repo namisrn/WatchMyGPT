@@ -1,9 +1,6 @@
-
-
-
 //
 //  ContentView.swift
-//  WatchMyGPT Watch App
+//  WatchMyAI
 //
 //  Created by Sasan Rafat Nami on 12.09.23.
 //
