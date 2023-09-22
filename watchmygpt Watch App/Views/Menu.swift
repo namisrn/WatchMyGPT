@@ -19,8 +19,8 @@ struct MenuItem: Identifiable {
 // Erstellen ein Array mit den Menüeinträgen und den zugehörigen Views
 let menuItems: [MenuItem] = [
     MenuItem(title: "New Chat", subtitle: "Start new Conversation", iconName: "plus.bubble", destinationView: AnyView(NewChat())),
-    MenuItem(title: "Settings", subtitle: "Info and Privacy", iconName: "gear", destinationView: AnyView(Setting())),
-    MenuItem(title: "Archive", subtitle: "coming soon", iconName: "archivebox", destinationView: AnyView(Archive()))
+    MenuItem(title: "Archive", subtitle: "Limited function ", iconName: "archivebox", destinationView: AnyView(Archive())),
+    MenuItem(title: "Settings", subtitle: "Info and Privacy", iconName: "gear", destinationView: AnyView(Setting()))
 ]
 
 
@@ -30,6 +30,7 @@ struct Menu: View {
         
         NavigationStack {
             List(menuItems) { item in
+                // NavigationLink für jedes Menüelement, das zur jeweiligen Zielansicht führt
                 NavigationLink(destination: item.destinationView) {
                     
                     VStack(alignment:.leading){

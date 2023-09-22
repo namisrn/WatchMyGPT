@@ -25,6 +25,7 @@ struct Setting: View {
         
         NavigationStack {
             List(settingItems) { item in
+                // NavigationLink für jedes Einstellungselement, das zur jeweiligen Zielansicht führt
                 NavigationLink(destination: item.destinationView) {
                     VStack(alignment:.leading){
                         Text(item.title)

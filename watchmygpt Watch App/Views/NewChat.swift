@@ -11,6 +11,7 @@ struct NewChat: View {
     
     @State private var userInput: String = "" // Hier wird der Benutzereingabestring gespeichert
     @State private var chatOutput: String = "" // Hier wird die Chat-Ausgabe gespeichert
+    @EnvironmentObject var archiveStore: ArchiveStore
 
     var body: some View {
         NavigationStack {
@@ -73,7 +74,7 @@ struct NewChat: View {
         
     }
     
-
+// Methode zum Senden einer Nachricht
 func sendMessage(_ message: String) {
     
     func getAPIKey() -> String? {
@@ -154,6 +155,14 @@ func sendMessage(_ message: String) {
                 print("Sonstiger Fehler beim Dekodieren der Antwort: \(error)")
             }
         }
+        
+        // Archiviere den Chat mit einem Titel
+        DispatchQueue.main.async {
+            // Erster Nachrichtentext wird als Titel verwendet
+            let firstMessage = self.chatOutput.split(separator: "\n").first ?? "No Title"
+            self.archiveStore.archive(title: String(firstMessage), conversation: self.chatOutput)
+        }
+        
     }.resume()
 
     // Dein bestehendes ChatResponse-Modell
