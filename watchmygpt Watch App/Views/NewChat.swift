@@ -22,7 +22,7 @@ struct NewChat: View {
                     ScrollView {
                         VStack(spacing: 10) { // Abstand zwischen den Nachrichten
                             
-                            Text("Welcome to WatchMyAI. How can i help you?")
+                            Text("Welcome to WatchMyAI. How can I help you?")
                                 .padding()
                             
                             ForEach(chatOutput.split(separator: "\n"), id: \.self) { message in
