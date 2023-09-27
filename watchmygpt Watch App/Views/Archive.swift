@@ -8,31 +8,19 @@
 import SwiftUI
 
 struct Archive: View {
-    
-    @EnvironmentObject var archiveStore: ArchiveStore
-
-    
     var body: some View {
         NavigationStack{
-            List {
-                // Durchläuft alle archivierten Gespräche und zeigt sie an
-                ForEach(archiveStore.archivedConversations) { chat in
-                    NavigationLink(destination: Text(chat.conversation)) {
-                        Text(chat.title)
-                    }
-                }
-                .onDelete(perform: { indexSet in
-                    archiveStore.delete(at: indexSet)
-                })
+            List{
+                Text("Coming Soon")
             }
-
             .containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Archive")
         }
         
-
+        
     }
 }
+
 
 #Preview {
     Archive()

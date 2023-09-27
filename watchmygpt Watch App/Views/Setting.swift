@@ -43,7 +43,7 @@ struct Setting: View {
 
 struct Info: View {
     var body: some View {
-        Text("Version: 1.0 Build 11")
+        Text("Version: 1.0 Build 12")
     }
 }
 
