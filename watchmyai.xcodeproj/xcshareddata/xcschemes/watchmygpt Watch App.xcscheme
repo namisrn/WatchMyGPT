@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8AE942042ABB2DB7000B8961"
-               BuildableName = "WatchMyGPT.app"
-               BlueprintName = "watchmygpt Watch App"
-               ReferencedContainer = "container:watchmygpt.xcodeproj">
+               BuildableName = "WatchMyAI.app"
+               BlueprintName = "watchmyai Watch App"
+               ReferencedContainer = "container:watchmyai.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8AE941FE2ABB2DB7000B8961"
-               BuildableName = "watchmygpt.app"
-               BlueprintName = "watchmygpt"
-               ReferencedContainer = "container:watchmygpt.xcodeproj">
+               BuildableName = "watchmyai.app"
+               BlueprintName = "watchmyai"
+               ReferencedContainer = "container:watchmyai.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -58,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8AE942042ABB2DB7000B8961"
-            BuildableName = "WatchMyGPT.app"
-            BlueprintName = "watchmygpt Watch App"
-            ReferencedContainer = "container:watchmygpt.xcodeproj">
+            BuildableName = "WatchMyAI.app"
+            BlueprintName = "watchmyai Watch App"
+            ReferencedContainer = "container:watchmyai.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8AE942042ABB2DB7000B8961"
-            BuildableName = "WatchMyGPT.app"
-            BlueprintName = "watchmygpt Watch App"
-            ReferencedContainer = "container:watchmygpt.xcodeproj">
+            BuildableName = "WatchMyAI.app"
+            BlueprintName = "watchmyai Watch App"
+            ReferencedContainer = "container:watchmyai.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

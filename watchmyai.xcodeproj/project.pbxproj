@@ -12,7 +12,7 @@
 		8A5172182ABBF4BA00C74A43 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172172ABBF4BA00C74A43 /* Archive.swift */; };
 		8AA3BE572ABC5822000F42CB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3BE562ABC5822000F42CB /* Setting.swift */; };
 		8AE83D832AC556A7005A5E74 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AE83D822AC556A7005A5E74 /* Config.plist */; };
-		8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AE942062ABB2DB7000B8961 /* WatchMyAI.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyAI.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AE9420B2ABB2DB7000B8961 /* watchmygptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */; };
 		8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9420C2ABB2DB7000B8961 /* ContentView.swift */; };
 		8AE9420F2ABB2DB7000B8961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				8AE942062ABB2DB7000B8961 /* WatchMyGPT.app in Embed Watch Content */,
+				8AE942062ABB2DB7000B8961 /* WatchMyAI.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,8 +49,8 @@
 		8A5172172ABBF4BA00C74A43 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		8AA3BE562ABC5822000F42CB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8AE83D822AC556A7005A5E74 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
-		8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmygpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMyGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE941FF2ABB2DB7000B8961 /* watchmyai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmyai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE942052ABB2DB7000B8961 /* WatchMyAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMyAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchmygptApp.swift; sourceTree = "<group>"; };
 		8AE9420C2ABB2DB7000B8961 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,8 +90,8 @@
 		8AE942002ABB2DB7000B8961 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */,
-				8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */,
+				8AE941FF2ABB2DB7000B8961 /* watchmyai.app */,
+				8AE942052ABB2DB7000B8961 /* WatchMyAI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8AE941FE2ABB2DB7000B8961 /* watchmygpt */ = {
+		8AE941FE2ABB2DB7000B8961 /* watchmyai */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8AE942192ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmygpt" */;
+			buildConfigurationList = 8AE942192ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmyai" */;
 			buildPhases = (
 				8AE941FD2ABB2DB7000B8961 /* Resources */,
 				8AE942182ABB2DB7000B8961 /* Embed Watch Content */,
@@ -132,14 +132,14 @@
 			dependencies = (
 				8AE942082ABB2DB7000B8961 /* PBXTargetDependency */,
 			);
-			name = watchmygpt;
+			name = watchmyai;
 			productName = watchmygpt;
-			productReference = 8AE941FF2ABB2DB7000B8961 /* watchmygpt.app */;
+			productReference = 8AE941FF2ABB2DB7000B8961 /* watchmyai.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
-		8AE942042ABB2DB7000B8961 /* watchmygpt Watch App */ = {
+		8AE942042ABB2DB7000B8961 /* watchmyai Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8AE942152ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmygpt Watch App" */;
+			buildConfigurationList = 8AE942152ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmyai Watch App" */;
 			buildPhases = (
 				8AE942012ABB2DB7000B8961 /* Sources */,
 				8AE942022ABB2DB7000B8961 /* Frameworks */,
@@ -149,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = "watchmygpt Watch App";
+			name = "watchmyai Watch App";
 			productName = "watchmygpt Watch App";
-			productReference = 8AE942052ABB2DB7000B8961 /* WatchMyGPT.app */;
+			productReference = 8AE942052ABB2DB7000B8961 /* WatchMyAI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8AE941FC2ABB2DB6000B8961 /* Build configuration list for PBXProject "watchmygpt" */;
+			buildConfigurationList = 8AE941FC2ABB2DB6000B8961 /* Build configuration list for PBXProject "watchmyai" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,8 +185,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8AE941FE2ABB2DB7000B8961 /* watchmygpt */,
-				8AE942042ABB2DB7000B8961 /* watchmygpt Watch App */,
+				8AE941FE2ABB2DB7000B8961 /* watchmyai */,
+				8AE942042ABB2DB7000B8961 /* watchmyai Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -230,7 +230,7 @@
 /* Begin PBXTargetDependency section */
 		8AE942082ABB2DB7000B8961 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8AE942042ABB2DB7000B8961 /* watchmygpt Watch App */;
+			target = 8AE942042ABB2DB7000B8961 /* watchmyai Watch App */;
 			targetProxy = 8AE942072ABB2DB7000B8961 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -370,7 +370,7 @@
 				);
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
-				PRODUCT_NAME = WatchMyGPT;
+				PRODUCT_NAME = WatchMyAI;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -400,7 +400,7 @@
 				);
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
-				PRODUCT_NAME = WatchMyGPT;
+				PRODUCT_NAME = WatchMyAI;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -447,7 +447,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8AE941FC2ABB2DB6000B8961 /* Build configuration list for PBXProject "watchmygpt" */ = {
+		8AE941FC2ABB2DB6000B8961 /* Build configuration list for PBXProject "watchmyai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8AE942132ABB2DB7000B8961 /* Debug */,
@@ -456,7 +456,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8AE942152ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmygpt Watch App" */ = {
+		8AE942152ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmyai Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8AE942162ABB2DB7000B8961 /* Debug */,
@@ -465,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8AE942192ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmygpt" */ = {
+		8AE942192ABB2DB7000B8961 /* Build configuration list for PBXNativeTarget "watchmyai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8AE9421A2ABB2DB7000B8961 /* Debug */,

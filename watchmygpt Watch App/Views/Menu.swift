@@ -19,7 +19,7 @@ struct MenuItem: Identifiable {
 // Erstellen ein Array mit den Menüeinträgen und den zugehörigen Views
 let menuItems: [MenuItem] = [
     MenuItem(title: "New Chat", subtitle: "Start new Conversation", iconName: "plus.bubble", destinationView: AnyView(NewChat())),
-    MenuItem(title: "Archive", subtitle: "Limited function ", iconName: "archivebox", destinationView: AnyView(Archive())),
+    MenuItem(title: "Archive", subtitle: "Coming Soon", iconName: "archivebox", destinationView: AnyView(Archive())),
     MenuItem(title: "Settings", subtitle: "Info and Privacy", iconName: "gear", destinationView: AnyView(Setting()))
 ]
 
