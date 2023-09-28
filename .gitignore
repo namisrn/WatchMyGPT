@@ -1,1 +1,4 @@
+*.plist
 Config.plist
+*.plist
+watchmygpt Watch App/Config.plist
