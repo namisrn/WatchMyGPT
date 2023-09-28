@@ -16,12 +16,12 @@ struct NewChat: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    Spacer(minLength: 50) // Platz am oberen Rand
+                    Spacer(minLength: 40) // Platz am oberen Rand
                     
                     ScrollView {
-                        VStack(spacing: 10) { // Abstand zwischen den Nachrichten
+                        VStack(spacing: 5) { // Abstand zwischen den Nachrichten
                             
-                            Text("Welcome to WatchMyAI. How can I help you?")
+                            Text("How can I help you?")
                                 .padding()
                             
                             ForEach(chatOutput.split(separator: "\n"), id: \.self) { message in
@@ -59,7 +59,7 @@ struct NewChat: View {
                         .frame(width: 55)
                         
                     }
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 10)) // Innenraum-Padding für HStack
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 8)) // Innenraum-Padding für HStack
                     
                     
                 }
