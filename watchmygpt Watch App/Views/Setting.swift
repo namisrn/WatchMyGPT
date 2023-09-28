@@ -52,7 +52,7 @@ struct LegalNotices: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-
+                
                 Text("Privacy Policy")
                     .font(.headline)
                 Text("No personal data is collected through this app.")
