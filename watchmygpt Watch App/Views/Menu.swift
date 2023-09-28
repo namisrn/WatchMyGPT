@@ -46,21 +46,21 @@ struct Menu: View {
                         Text(item.subtitle)
                             .font(.footnote)
                             .foregroundColor(.gray)
-
-                        }
+                        
                     }
-                    .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
-                    
-                    
                 }
-                .navigationTitle("WatchMyAI")
-                .containerBackground(.blue.gradient, for: .navigation)
+                .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+                
                 
             }
-            .listStyle(.carousel)
+            .navigationTitle("WatchMyAI")
+            .containerBackground(.blue.gradient, for: .navigation)
+            
         }
-        
+        .listStyle(.carousel)
     }
+    
+}
 
 #Preview {
     Menu()
