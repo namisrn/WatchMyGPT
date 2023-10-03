@@ -74,6 +74,7 @@ struct LegalNotices: View {
             }
             .padding()
         }
+        .containerBackground(.blue.gradient, for: .navigation)
         .navigationTitle("Legal Notices")
     }
 }

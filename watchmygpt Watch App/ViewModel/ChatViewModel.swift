@@ -14,6 +14,10 @@ class ChatViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     
+    @Published var messageContext: [[String: String]] = [
+        ["role": "system", "content": "You are a helpful assistant."]
+    ]
+    
     // Diese Funktion teilt den Text in kleinere Segmente auf
     func splitTextIntoSegments(text: String, maxWords: Int) -> [String] {
         let words = text.split(separator: " ")
@@ -52,8 +56,12 @@ class ChatViewModel: ObservableObject {
     func sendMessage() {
         
         isLoading = true // Start Loading Indicator
-
+        
+        let userMessage = ["role": "user", "content": userInput]
+        messageContext.append(userMessage)
+        
         let message = self.userInput
+
         
         func getAPIKey() -> String? {
             var apiKey: String?
@@ -82,8 +90,8 @@ class ChatViewModel: ObservableObject {
         ]
         
         // JSON-Body für die Anfrage erstellen
-        let json: [String: Any] = ["model": "gpt-3.5-turbo", "messages": messages]
-        
+        let json: [String: Any] = ["model": "gpt-3.5-turbo", "messages": messageContext]
+
         // Ausgabe des Anfrage-Bodys
         if let jsonData = try? JSONSerialization.data(withJSONObject: json), let jsonString = String(data: jsonData, encoding: .utf8) {
             print("Anfrage-Body: \(jsonString)")
@@ -92,7 +100,7 @@ class ChatViewModel: ObservableObject {
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
         
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            
+
             DispatchQueue.main.async { // Switch to main thread
                 self?.isLoading = false // Stop Loading Indicator
             }
@@ -124,33 +132,33 @@ class ChatViewModel: ObservableObject {
                     DispatchQueue.main.async { [weak self] in
                         if let strongSelf = self {
                             let content = decodedResponse.choices[0].message.content
-                            let segments = strongSelf.splitTextIntoSegments(text: content, maxWords: 200) // Verwende "strongSelf" hier
+                            let segments = strongSelf.splitTextIntoSegments(text: content, maxWords: 200)
                             
-                            strongSelf.chatOutput += "\nYou: \(message)"
+                            strongSelf.chatOutput += "\nYou: \(strongSelf.userInput)"
                             strongSelf.sendSegments(segments: segments)
                             
-                            strongSelf.userInput = "" // Lösche die Eingabe, um Platz für eine neue Nachricht zu machen
+                            // Aktualisiere den messageContext mit der Antwort des Assistenten
+                            let assistantMessage = ["role": "assistant", "content": content]
+                            strongSelf.messageContext.append(assistantMessage)
+                            
+                            strongSelf.userInput = "" // Clear the input to make room for a new message
                         }
                     }
-
                 } catch {
-                    // Fehlerbehandlung
+                    print("Error!")
                 }
             }
         }.resume()
-        
-        struct ChatResponse: Codable {
-            struct Choice: Codable {
-                let message: Message
-            }
-            struct Message: Codable {
-                let role: String
-                let content: String
-            }
-            let choices: [Choice]
-        }
-        
     }
     
+    struct ChatResponse: Codable {
+        struct Choice: Codable {
+            let message: Message
+        }
+        struct Message: Codable {
+            let role: String
+            let content: String
+        }
+        let choices: [Choice]
+    }
 }
-
