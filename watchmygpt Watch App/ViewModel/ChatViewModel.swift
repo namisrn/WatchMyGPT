@@ -6,7 +6,6 @@
 //
 import Foundation
 
-
 class ChatViewModel: ObservableObject {
     
     @Published var chatOutput: String = "How can I help you?"
@@ -14,12 +13,10 @@ class ChatViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var isTyping: Bool = false
-
     @Published var messageContext: [[String: String]] = [
         ["role": "system", "content": "You are a helpful assistant."]
     ]
     
-    // Diese Funktion teilt den Text in kleinere Segmente auf
     func splitTextIntoSegments(text: String, maxWords: Int) -> [String] {
         let words = text.split(separator: " ")
         var segments: [String] = []
@@ -44,7 +41,6 @@ class ChatViewModel: ObservableObject {
         return segments
     }
     
-    // Diese Funktion sendet die Segmente nacheinander
     func sendSegments(segments: [String]) {
         for segment in segments {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -52,19 +48,16 @@ class ChatViewModel: ObservableObject {
             }
         }
     }
-
     
-    func sendMessage() {
+    func sendMessage(retryCount: Int = 0) {
         
-        isLoading = true // Start Loading Indicator
-        isTyping = true // Start typing animation
-
+        isLoading = true
+        isTyping = true
         
         let userMessage = ["role": "user", "content": userInput]
         messageContext.append(userMessage)
         
-        let message = self.userInput
-
+        _ = self.userInput
         
         func getAPIKey() -> String? {
             var apiKey: String?
@@ -76,56 +69,33 @@ class ChatViewModel: ObservableObject {
             return apiKey
         }
         
-        // Konfiguration für die OpenAI API
         let urlString = "https://api.openai.com/v1/chat/completions"
         let apiKey = getAPIKey() ?? ""
         
-        // URLRequest konfigurieren
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.timeoutInterval = 500 // Setze Timeout auf 300 Sekunden
         
-        // Nachrichten für die Anfrage erstellen
-        let messages = [
-            ["role": "system", "content": "You are a helpful assistant."],
-            ["role": "user", "content": message]
-        ]
-        
-        // JSON-Body für die Anfrage erstellen
         let json: [String: Any] = ["model": "gpt-3.5-turbo", "messages": messageContext]
-
-        // Ausgabe des Anfrage-Bodys
-        if let jsonData = try? JSONSerialization.data(withJSONObject: json), let jsonString = String(data: jsonData, encoding: .utf8) {
-            print("Anfrage-Body: \(jsonString)")
-        }
-        
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
         
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-
-            DispatchQueue.main.async { // Switch to main thread
-                self?.isLoading = false // Stop Loading Indicator
-                self?.isTyping = false // Stop typing animation
-            }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                print("HTTP-Statuscode: \(httpResponse.statusCode)")
-                
-                if httpResponse.statusCode != 200 {
-                    // Handle Fehlerantwort vom Server hier
-                    // Zeige eine Fehlermeldung im UI oder protokolliere sie.
-                    if let data = data {
-                        let str = String(data: data, encoding: .utf8)
-                        print("Fehlerantwort vom Server: \(str ?? "")")
-                    }
-                    return
-                }
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                self?.isTyping = false
             }
             
             if let error = error {
-                DispatchQueue.main.async { // Switch to main thread
+                DispatchQueue.main.async {
                     self?.errorMessage = "Fehler beim Senden der Anfrage: \(error)"
+                }
+                if retryCount < 3 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self?.sendMessage(retryCount: retryCount + 1)
+                    }
                 }
                 return
             }
@@ -141,11 +111,10 @@ class ChatViewModel: ObservableObject {
                             strongSelf.chatOutput += "\nYou: \(strongSelf.userInput)"
                             strongSelf.sendSegments(segments: segments)
                             
-                            // Aktualisiere den messageContext mit der Antwort des Assistenten
                             let assistantMessage = ["role": "assistant", "content": content]
                             strongSelf.messageContext.append(assistantMessage)
                             
-                            strongSelf.userInput = "" // Clear the input to make room for a new message
+                            strongSelf.userInput = ""
                         }
                     }
                 } catch {
