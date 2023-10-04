@@ -13,7 +13,8 @@ class ChatViewModel: ObservableObject {
     @Published var userInput: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
-    
+    @Published var isTyping: Bool = false
+
     @Published var messageContext: [[String: String]] = [
         ["role": "system", "content": "You are a helpful assistant."]
     ]
@@ -56,6 +57,8 @@ class ChatViewModel: ObservableObject {
     func sendMessage() {
         
         isLoading = true // Start Loading Indicator
+        isTyping = true // Start typing animation
+
         
         let userMessage = ["role": "user", "content": userInput]
         messageContext.append(userMessage)
@@ -103,6 +106,7 @@ class ChatViewModel: ObservableObject {
 
             DispatchQueue.main.async { // Switch to main thread
                 self?.isLoading = false // Stop Loading Indicator
+                self?.isTyping = false // Stop typing animation
             }
             
             if let httpResponse = response as? HTTPURLResponse {
