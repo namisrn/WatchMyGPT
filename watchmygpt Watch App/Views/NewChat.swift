@@ -79,7 +79,9 @@ struct NewChat: View {
                         
                         // Sende-Button
                         Button(action: {
-                            viewModel.sendMessage() // Aufruf der sendMessage Funktion im ViewModel
+                            Task {
+                                await viewModel.sendMessage() // Aufruf der sendMessage Funktion im ViewModel
+                            }
                         }) {
                             Image(systemName: "paperplane.fill") // Symbol für den Button
                                 .font(Font.system(size: 25)) // Schriftgröße für das Symbol

@@ -21,30 +21,36 @@ let settingItems: [SettingItem] = [
 ]
 
 struct Setting: View {
+    
+    @ObservedObject var viewModel = ChatViewModel()  // Access the ViewModel
+
     var body: some View {
         
         NavigationStack {
-            List(settingItems) { item in
-                // NavigationLink für jedes Einstellungselement, das zur jeweiligen Zielansicht führt
-                NavigationLink(destination: item.destinationView) {
-                    VStack(alignment:.leading){
-                        Text(item.title)
+            List {
+                // NavigationLink für die vorhandenen Einstellungselemente
+                ForEach(settingItems) { item in
+                    NavigationLink(destination: item.destinationView) {
+                        VStack(alignment:.leading){
+                            Text(item.title)
+                        }
                     }
+                    .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                 }
-                .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+                
             }
             .containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Setting")
-            
         }
         .listStyle(.plain)
     }
 }
 
+
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.1")
+            Text("Version: 1.2 (3)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)

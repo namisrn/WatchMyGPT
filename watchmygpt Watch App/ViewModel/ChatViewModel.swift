@@ -5,6 +5,7 @@
 //  Created by Sasan Rafat Nami on 03.10.23.
 //
 import Foundation
+import WatchKit
 
 class ChatViewModel: ObservableObject {
     
@@ -49,26 +50,17 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    func sendMessage(retryCount: Int = 0) {
-        
-        isLoading = true
-        isTyping = true
-        
-        let userMessage = ["role": "user", "content": userInput]
-        messageContext.append(userMessage)
-        
-        _ = self.userInput
-        
-        func getAPIKey() -> String? {
-            var apiKey: String?
-            if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
-                if let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
-                    apiKey = dict["API_KEY"] as? String
-                }
+    private func getAPIKey() -> String? {
+        var apiKey: String?
+        if let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                apiKey = dict["API_KEY"] as? String
             }
-            return apiKey
         }
-        
+        return apiKey
+    }
+    
+    private func sendAsyncRequest() async throws -> ChatResponse {
         let urlString = "https://api.openai.com/v1/chat/completions"
         let apiKey = getAPIKey() ?? ""
         
@@ -76,52 +68,51 @@ class ChatViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.timeoutInterval = 500 // Setze Timeout auf 300 Sekunden
+        request.timeoutInterval = 1000 // Setze Timeout auf 1000 Sekunden
         
         let json: [String: Any] = ["model": "gpt-3.5-turbo", "messages": messageContext]
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
         
-        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let decodedResponse = try JSONDecoder().decode(ChatResponse.self, from: data)
+        return decodedResponse
+    }
+    
+    func sendMessage() async {
+        
+        isLoading = true
+        isTyping = true
+        
+        let userMessage = ["role": "user", "content": userInput]
+        messageContext.append(userMessage)
+        
+        do {
+            let decodedResponse = try await sendAsyncRequest()
+            let content = decodedResponse.choices[0].message.content
+            let segments = splitTextIntoSegments(text: content, maxWords: 200)
             
             DispatchQueue.main.async {
-                self?.isLoading = false
-                self?.isTyping = false
+                self.chatOutput += "\nYou: \(self.userInput)"
+                self.sendSegments(segments: segments)
+                
+                let assistantMessage = ["role": "assistant", "content": content]
+                self.messageContext.append(assistantMessage)
+                
+                // Haptisches Feedback immer abspielen
+                WKInterfaceDevice.current().play(.success)
+                
+                self.userInput = ""
+                self.isLoading = false
+                self.isTyping = false
             }
             
-            if let error = error {
-                DispatchQueue.main.async {
-                    self?.errorMessage = "Fehler beim Senden der Anfrage: \(error)"
-                }
-                if retryCount < 3 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self?.sendMessage(retryCount: retryCount + 1)
-                    }
-                }
-                return
+        } catch {
+            DispatchQueue.main.async {
+                self.errorMessage = "Fehler beim Senden der Anfrage: \(error)"
+                self.isLoading = false
+                self.isTyping = false
             }
-            
-            if let data = data {
-                do {
-                    let decodedResponse = try JSONDecoder().decode(ChatResponse.self, from: data)
-                    DispatchQueue.main.async { [weak self] in
-                        if let strongSelf = self {
-                            let content = decodedResponse.choices[0].message.content
-                            let segments = strongSelf.splitTextIntoSegments(text: content, maxWords: 200)
-                            
-                            strongSelf.chatOutput += "\nYou: \(strongSelf.userInput)"
-                            strongSelf.sendSegments(segments: segments)
-                            
-                            let assistantMessage = ["role": "assistant", "content": content]
-                            strongSelf.messageContext.append(assistantMessage)
-                            
-                            strongSelf.userInput = ""
-                        }
-                    }
-                } catch {
-                    print("Error!")
-                }
-            }
-        }.resume()
+        }
     }
     
     struct ChatResponse: Codable {
