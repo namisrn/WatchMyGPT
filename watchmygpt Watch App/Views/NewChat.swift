@@ -66,6 +66,27 @@ struct NewChat: View {
                                 Text("Fehler: \(errorMessage)")
                                     .foregroundColor(.red) // Rote Textfarbe für Fehlermeldungen
                             }
+                            
+                            // Button für den Verbindungsfehler
+                            if viewModel.connectionError && viewModel.messageSent {
+                                Button("Try Again") {
+                                    Task {
+                                        await viewModel.sendMessage()
+                                    }
+                                }
+                            }
+                            
+                            
+                            // "Mehr"-Button für die Fortsetzung der Antwort
+                            if !viewModel.isLoading && !viewModel.connectionError && viewModel.messageSent && !viewModel.isLastResponseComplete() {
+                                Button("More") {
+                                    Task {
+                                        await viewModel.continueMessage()
+                                    }
+                                }
+                            }
+
+
                         }
                         .frame(maxWidth: .infinity, alignment: .leading) // Maximale Breite und Ausrichtung für den VStack
                     }
