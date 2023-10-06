@@ -23,7 +23,7 @@ let settingItems: [SettingItem] = [
 struct Setting: View {
     
     @ObservedObject var viewModel = ChatViewModel()  // Access the ViewModel
-
+    
     var body: some View {
         
         NavigationStack {
@@ -50,13 +50,13 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.2 (5)")
+            Text("Version: 1.3 (4)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("Info")
-
-
+        
+        
     }
 }
 
@@ -84,6 +84,7 @@ struct LegalNotices: View {
         .navigationTitle("Legal Notices")
     }
 }
+
 
 #Preview {
     Setting()

@@ -54,7 +54,7 @@ struct NewChat: View {
                                     .multilineTextAlignment(.leading)
                                     .padding(10)
                             }
-
+                            
                             
                             // Ladeanzeige, wenn eine Anfrage an die API gesendet wird
                             if viewModel.isLoading {
@@ -85,8 +85,8 @@ struct NewChat: View {
                                     }
                                 }
                             }
-
-
+                            
+                            
                         }
                         .frame(maxWidth: .infinity, alignment: .leading) // Maximale Breite und Ausrichtung für den VStack
                     }
@@ -96,7 +96,7 @@ struct NewChat: View {
                     HStack(spacing: 6) { // Horizontaler Stapel mit einem Abstand von 6 zwischen den Elementen
                         TextField("Send a message...", text: $viewModel.userInput) // Eingabefeld für den Benutzer
                             .disabled(viewModel.isTyping)  // Deaktiviere das TextField, wenn GPT tippt
-
+                        
                         
                         // Sende-Button
                         Button(action: {
@@ -110,7 +110,7 @@ struct NewChat: View {
                         .clipShape(Circle()) // Kreisförmiger Button
                         .frame(width: 55) // Breite des Buttons
                         .disabled(viewModel.isTyping)  // Deaktiviere den Button, wenn GPT tippt
-
+                        
                     }
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 8)) // Abstand um den HStack
                 }

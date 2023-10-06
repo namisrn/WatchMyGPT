@@ -10,6 +10,7 @@
 		8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172112ABB8BCB00C74A43 /* NewChat.swift */; };
 		8A5172162ABB8EA600C74A43 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172152ABB8EA600C74A43 /* Menu.swift */; };
 		8A5172182ABBF4BA00C74A43 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5172172ABBF4BA00C74A43 /* Archive.swift */; };
+		8A8EA6F22AD020CA001F391A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EA6F12AD020CA001F391A /* ChatViewModel.swift */; };
 		8AA3BE572ABC5822000F42CB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3BE562ABC5822000F42CB /* Setting.swift */; };
 		8AE83D832AC556A7005A5E74 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AE83D822AC556A7005A5E74 /* Config.plist */; };
 		8AE942062ABB2DB7000B8961 /* WatchMyAI.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AE942052ABB2DB7000B8961 /* WatchMyAI.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -47,6 +48,7 @@
 		8A5172112ABB8BCB00C74A43 /* NewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChat.swift; sourceTree = "<group>"; };
 		8A5172152ABB8EA600C74A43 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		8A5172172ABBF4BA00C74A43 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		8A8EA6F12AD020CA001F391A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		8AA3BE562ABC5822000F42CB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8AE83D822AC556A7005A5E74 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		8AE941FF2ABB2DB7000B8961 /* watchmyai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchmyai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A8EA6F02AD02088001F391A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A8EA6F12AD020CA001F391A /* ChatViewModel.swift */,
+			);
+			name = ViewModel;
+			path = Views/ViewModel;
+			sourceTree = "<group>";
+		};
 		8AE941F82ABB2DB6000B8961 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +113,7 @@
 				8AE9420A2ABB2DB7000B8961 /* watchmygptApp.swift */,
 				8AE83D822AC556A7005A5E74 /* Config.plist */,
 				8AE9420C2ABB2DB7000B8961 /* ContentView.swift */,
+				8A8EA6F02AD02088001F391A /* ViewModel */,
 				8A5172102ABB8BA100C74A43 /* Views */,
 				8AE9420E2ABB2DB7000B8961 /* Assets.xcassets */,
 				8AE942102ABB2DB7000B8961 /* Preview Content */,
@@ -217,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5172182ABBF4BA00C74A43 /* Archive.swift in Sources */,
+				8A8EA6F22AD020CA001F391A /* ChatViewModel.swift in Sources */,
 				8AE9420D2ABB2DB7000B8961 /* ContentView.swift in Sources */,
 				8AA3BE572ABC5822000F42CB /* Setting.swift in Sources */,
 				8A5172122ABB8BCB00C74A43 /* NewChat.swift in Sources */,
@@ -357,7 +370,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"watchmygpt Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				ENABLE_PREVIEWS = YES;
@@ -368,7 +381,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
 				PRODUCT_NAME = WatchMyAI;
 				SDKROOT = watchos;
@@ -387,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"watchmygpt Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				ENABLE_PREVIEWS = YES;
@@ -398,7 +411,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt.watchkitapp;
 				PRODUCT_NAME = WatchMyAI;
 				SDKROOT = watchos;
@@ -416,10 +429,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				INFOPLIST_KEY_CFBundleDisplayName = watchmygpt;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -432,10 +445,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = P57GR7YZG3;
 				INFOPLIST_KEY_CFBundleDisplayName = watchmygpt;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.srn.watchmygpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
