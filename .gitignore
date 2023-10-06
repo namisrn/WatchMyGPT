@@ -2,3 +2,5 @@
 Config.plist
 *.plist
 watchmygpt Watch App/Config.plist
+watchmyai.xcodeproj/project.pbxproj
+watchmyai.xcodeproj/project.xcworkspace/xcuserdata/sasan.xcuserdatad/UserInterfaceState.xcuserstate
