@@ -6,6 +6,7 @@
 //
 import Foundation
 import WatchKit
+import UserNotifications
 
 class ChatViewModel: ObservableObject {
     
@@ -196,4 +197,18 @@ class ChatViewModel: ObservableObject {
         }
         return true
     }
+    
+    func scheduleUpdateNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Update Available"
+        content.body = "A new version of the app is available. Update now!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "updateNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
+    
 }

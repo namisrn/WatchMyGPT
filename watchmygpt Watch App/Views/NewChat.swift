@@ -19,7 +19,7 @@ struct NewChat: View {
                 VStack { // Vertikaler Stapel für Anordnung der Unter-Views
                     
                     // Ein Spacer, der Platz am oberen Rand der Ansicht lässt
-                    Spacer(minLength: 55)
+                    Spacer(minLength: 60)
                     
                     // ScrollView für den Chatverlauf
                     ScrollView {

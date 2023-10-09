@@ -38,6 +38,12 @@ struct Setting: View {
                     .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                 }
                 
+                Button("Check for Update") {
+                    // Überprüfe hier, ob ein Update verfügbar ist.
+                    // Wenn ja, dann plane die Benachrichtigung.
+                    self.viewModel.scheduleUpdateNotification()  // Änderung hier, rufe die Methode auf
+                }
+                
             }
             .containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Setting")
@@ -50,7 +56,7 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.4 (1)")
+            Text("Version: 1.4 (5)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
