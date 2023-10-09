@@ -50,7 +50,7 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.3 (4)")
+            Text("Version: 1.4 (1)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)

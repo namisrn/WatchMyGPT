@@ -12,7 +12,6 @@ struct NewChat: View {
     
     // Verwendung des ViewModel für die Datenbindung
     @ObservedObject var viewModel = ChatViewModel()
-    
     // Der Body der View
     var body: some View {
         NavigationStack { // Navigationscontainer
@@ -20,18 +19,17 @@ struct NewChat: View {
                 VStack { // Vertikaler Stapel für Anordnung der Unter-Views
                     
                     // Ein Spacer, der Platz am oberen Rand der Ansicht lässt
-                    Spacer(minLength: 45)
+                    Spacer(minLength: 55)
                     
                     // ScrollView für den Chatverlauf
                     ScrollView {
-                        VStack(spacing: 5) { // Vertikaler Stapel mit einem Abstand von 5 zwischen den Elementen
-                            
+                        VStack(spacing: 2) { // Vertikaler Stapel mit einem Abstand von 5 zwischen den Elementen
                             // Anfangsnachricht "How can I help you?"
                             Text("How can I help you?")
-                                .padding(10) // Abstand um den Text
+                                .padding(8) // Abstand um den Text
                                 .background(Color.gray.opacity(0.2)) // Hintergrundfarbe
                                 .cornerRadius(10) // Eckenradius für den Hintergrund
-                            
+
                             // Schleife durch die Chat-Ausgabe und zeige sie an
                             ForEach(viewModel.chatOutput.split(separator: "\n"), id: \.self) { message in
                                 if message.hasPrefix("GPT:") { // Wenn die Nachricht von GPT kommt
@@ -51,7 +49,7 @@ struct NewChat: View {
                             
                             if viewModel.isTyping {
                                 Text("GPT is typing...")
-                                    .multilineTextAlignment(.leading)
+                                    .multilineTextAlignment(.center)
                                     .padding(10)
                             }
                             
@@ -76,50 +74,50 @@ struct NewChat: View {
                                 }
                             }
                             
+
                             
-                            // "Mehr"-Button für die Fortsetzung der Antwort
-                            if !viewModel.isLoading && !viewModel.connectionError && viewModel.messageSent && !viewModel.isLastResponseComplete() {
-                                Button("More") {
+                        }
+                        //.frame(maxWidth: .infinity, alignment: .center) // Maximale Breite und Ausrichtung für den VStack
+                        //.border(Color.red)
+
+                    }
+                    //.padding() // Abstand um die ScrollView
+                    //.border(Color.cyan)
+                    .scenePadding()
+                    .toolbar{
+                        ToolbarItem(placement: .bottomBar) {
+                            Spacer()
+                        }
+                        ToolbarItem(placement: .bottomBar){
+                            // Eingabefeld und Sende-Button
+                            TextField("Start", text: $viewModel.userInput) // Eingabefeld für den Benutzer
+                                .frame(width: 60)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(20)
+                                .multilineTextAlignment(.center)
+                                .disabled(viewModel.isTyping)  // Deaktiviere das TextField, wenn GPT tippt
+                                .submitLabel(.send)
+                                .onSubmit {  // Aktion, die beim Senden ausgeführt wird
                                     Task {
-                                        await viewModel.continueMessage()
+                                        await viewModel.sendMessage() // Aufruf der sendMessage Funktion im ViewModel
                                     }
                                 }
-                            }
-                            
-                            
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading) // Maximale Breite und Ausrichtung für den VStack
-                    }
-                    .padding() // Abstand um die ScrollView
-                    
-                    // Eingabefeld und Sende-Button
-                    HStack(spacing: 6) { // Horizontaler Stapel mit einem Abstand von 6 zwischen den Elementen
-                        TextField("Send a message...", text: $viewModel.userInput) // Eingabefeld für den Benutzer
-                            .disabled(viewModel.isTyping)  // Deaktiviere das TextField, wenn GPT tippt
-                        
-                        
-                        // Sende-Button
-                        Button(action: {
-                            Task {
-                                await viewModel.sendMessage() // Aufruf der sendMessage Funktion im ViewModel
-                            }
-                        }) {
-                            Image(systemName: "paperplane.fill") // Symbol für den Button
-                                .font(Font.system(size: 25)) // Schriftgröße für das Symbol
-                        }
-                        .clipShape(Circle()) // Kreisförmiger Button
-                        .frame(width: 55) // Breite des Buttons
-                        .disabled(viewModel.isTyping)  // Deaktiviere den Button, wenn GPT tippt
-                        
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 8)) // Abstand um den HStack
+                    }//toolbar
                 }
+                
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Maximale Größe für den VStack
+                //.border(Color.red)
+
             }
             .edgesIgnoringSafeArea(.all) // Ignoriere den Safe Area für diese Ansicht
             .containerBackground(.blue.gradient, for: .navigation) // Hintergrundfarbe für die Navigationsleiste
             .navigationTitle("New Chat") // Titel der Navigationsleiste
+            //.border(Color.green)
+            
+
         }
+        
     }
 }
 
