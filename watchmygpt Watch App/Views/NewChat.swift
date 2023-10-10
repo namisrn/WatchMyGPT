@@ -4,41 +4,51 @@
 //
 //  Created by Sasan Rafat Nami on 20.09.23.
 //
-
 import SwiftUI
 
-// Die Hauptansicht für den Chat
+// NewChat: Struktur für die Hauptansicht des Chats
 struct NewChat: View {
     
-    // Verwendung des ViewModel für die Datenbindung
+    // ViewModel für Datenbindung
     @ObservedObject var viewModel = ChatViewModel()
-    // Der Body der View
+    
+    // Hauptkörper der View
     var body: some View {
-        NavigationStack { // Navigationscontainer
-            ZStack { // Stapel für Überlagerung von Views
-                VStack { // Vertikaler Stapel für Anordnung der Unter-Views
-                    
-                    // Ein Spacer, der Platz am oberen Rand der Ansicht lässt
+        
+        // Navigationscontainer
+        NavigationStack {
+            ZStack {
+                VStack {
+                    // Spacer, der Platz am oberen Rand der Ansicht lässt
                     Spacer(minLength: 60)
                     
                     // ScrollView für den Chatverlauf
                     ScrollView {
-                        VStack(spacing: 2) { // Vertikaler Stapel mit einem Abstand von 5 zwischen den Elementen
+                        
+                        // Vertikaler Stapel mit Abstand von 2 zwischen den Elementen
+                        VStack(spacing: 2) {
+                            
                             // Anfangsnachricht "How can I help you?"
                             Text("How can I help you?")
-                                .padding(8) // Abstand um den Text
-                                .background(Color.gray.opacity(0.2)) // Hintergrundfarbe
-                                .cornerRadius(10) // Eckenradius für den Hintergrund
-
+                                .padding(8)
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                            
                             // Schleife durch die Chat-Ausgabe und zeige sie an
                             ForEach(viewModel.chatOutput.split(separator: "\n"), id: \.self) { message in
-                                if message.hasPrefix("GPT:") { // Wenn die Nachricht von GPT kommt
+                                
+                                // Wenn die Nachricht von GPT kommt
+                                if message.hasPrefix("GPT:") {
+                                    
                                     Text(message)
-                                        .multilineTextAlignment(.leading) // Ausrichtung des Texts
-                                        .padding(10) // Abstand um den Text
-                                        .background(Color.gray.opacity(0.2)) // Hintergrundfarbe
-                                        .cornerRadius(10) // Eckenradius
-                                } else if message.hasPrefix("You:") { // Wenn die Nachricht vom Benutzer kommt
+                                        .multilineTextAlignment(.leading)
+                                        .padding(10)
+                                        .background(Color.gray.opacity(0.2))
+                                        .cornerRadius(10)
+                                    
+                                    // Wenn die Nachricht vom Benutzer kommt
+                                } else if message.hasPrefix("You:") {
+                                    
                                     Text(message)
                                         .multilineTextAlignment(.leading)
                                         .padding(10)
@@ -47,12 +57,12 @@ struct NewChat: View {
                                 }
                             }
                             
+                            // Anzeige, wenn GPT tippt
                             if viewModel.isTyping {
                                 Text("GPT is typing...")
                                     .multilineTextAlignment(.center)
                                     .padding(10)
                             }
-                            
                             
                             // Ladeanzeige, wenn eine Anfrage an die API gesendet wird
                             if viewModel.isLoading {
@@ -62,65 +72,58 @@ struct NewChat: View {
                             // Fehlermeldung, falls vorhanden
                             if let errorMessage = viewModel.errorMessage {
                                 Text("Fehler: \(errorMessage)")
-                                    .foregroundColor(.red) // Rote Textfarbe für Fehlermeldungen
+                                    .foregroundColor(.red)
                             }
                             
                             // Button für den Verbindungsfehler
                             if viewModel.connectionError && viewModel.messageSent {
                                 Button("Try Again") {
                                     Task {
-                                        await viewModel.sendMessage()
+                                        await viewModel.retryMessage()
                                     }
                                 }
                             }
-                            
-
-                            
                         }
-                        //.frame(maxWidth: .infinity, alignment: .center) // Maximale Breite und Ausrichtung für den VStack
-                        //.border(Color.red)
-
                     }
-                    //.padding() // Abstand um die ScrollView
-                    //.border(Color.cyan)
                     .scenePadding()
+                    
+                    // Toolbar für das Textfeld und den Senden-Button
                     .toolbar{
                         ToolbarItem(placement: .bottomBar) {
                             Spacer()
                         }
                         ToolbarItem(placement: .bottomBar){
-                            // Eingabefeld und Sende-Button
-                            TextField("Start", text: $viewModel.userInput) // Eingabefeld für den Benutzer
+                            
+                            // Eingabefeld für den Benutzer
+                            TextField("Start", text: $viewModel.userInput)
                                 .frame(width: 60)
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(20)
                                 .multilineTextAlignment(.center)
                                 .disabled(viewModel.isTyping)  // Deaktiviere das TextField, wenn GPT tippt
                                 .submitLabel(.send)
-                                .onSubmit {  // Aktion, die beim Senden ausgeführt wird
-                                    Task {
-                                        await viewModel.sendMessage() // Aufruf der sendMessage Funktion im ViewModel
+                            
+                            // Aktion, die beim Senden ausgeführt wird
+                                .onSubmit {
+                                    if !viewModel.userInput.isEmpty {
+                                        Task {
+                                            await viewModel.sendMessage()
+                                        }
                                     }
                                 }
                         }
-                    }//toolbar
+                    }
                 }
+                // Maximale Größe für den VStack
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                .frame(maxWidth: .infinity, maxHeight: .infinity) // Maximale Größe für den VStack
-                //.border(Color.red)
-
             }
-            .edgesIgnoringSafeArea(.all) // Ignoriere den Safe Area für diese Ansicht
-            .containerBackground(.blue.gradient, for: .navigation) // Hintergrundfarbe für die Navigationsleiste
-            .navigationTitle("New Chat") // Titel der Navigationsleiste
-            //.border(Color.green)
-            
-
+            .edgesIgnoringSafeArea(.all)
+            .containerBackground(.blue.gradient, for: .navigation)
+            .navigationTitle("New Chat")
         }
-        
     }
 }
-
 
 
 #Preview {

@@ -17,7 +17,9 @@ struct SettingItem: Identifiable {
 // Erstellen ein Array mit den Menüeinträgen und den zugehörigen Views
 let settingItems: [SettingItem] = [
     SettingItem(title: "Info",  destinationView: AnyView(Info())),
+    SettingItem(title: "What's New", destinationView: AnyView(wahtsNew())),
     SettingItem(title: "Legal Notices",  destinationView: AnyView(LegalNotices())),
+
 ]
 
 struct Setting: View {
@@ -28,6 +30,13 @@ struct Setting: View {
         
         NavigationStack {
             List {
+                
+                Button("Check for Update") {
+                    // Überprüfe hier, ob ein Update verfügbar ist.
+                    // Wenn ja, dann plane die Benachrichtigung.
+                    self.viewModel.scheduleUpdateNotification()
+                }
+                
                 // NavigationLink für die vorhandenen Einstellungselemente
                 ForEach(settingItems) { item in
                     NavigationLink(destination: item.destinationView) {
@@ -37,13 +46,6 @@ struct Setting: View {
                     }
                     .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                 }
-                
-                Button("Check for Update") {
-                    // Überprüfe hier, ob ein Update verfügbar ist.
-                    // Wenn ja, dann plane die Benachrichtigung.
-                    self.viewModel.scheduleUpdateNotification()  // Änderung hier, rufe die Methode auf
-                }
-                
             }
             .containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Setting")
@@ -56,7 +58,7 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.4 (5)")
+            Text("Version: 1.4 (7)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
@@ -75,11 +77,11 @@ struct LegalNotices: View {
                 Text("Privacy Policy")
                     .font(.headline)
                 Text("No personal data is collected through this app.")
-                
+                Divider()
                 Text("License")
                     .font(.headline)
                 Text("All content is copyrighted and subject to licensing terms.")
-                
+                Divider()
                 Text("Disclaimer")
                     .font(.headline)
                 Text("We are not responsible for any damages that may arise from using this app.")
@@ -91,6 +93,33 @@ struct LegalNotices: View {
     }
 }
 
+struct wahtsNew: View {
+    var body: some View {
+        ScrollView{
+            VStack(alignment: .leading, spacing: 10){
+                Section(header: Text("Version 1.4:")){
+                    Text("- New Chat Design")
+                    Text("- Add Stack Stack")
+                    Text("- UI-Improvment and Bug Fixing")
+                }
+                Divider()
+                Section(header: Text("Version 1.3:")){
+                    Text("- Improvment and Bug fixing")
+                }
+                Divider()
+                Section(header: Text("Version 1.2:")){
+                    Text("- Asynchronous Requests: Chat more smoothly with faster message loading.")
+                    Text("- Haptic Feedback: Get a vibration alert when GPT's reply arrives.")
+                    Text("- Connection Error Handling")
+                    Text("- TryAgin Button for Incomplete Responses")
+                }
+            }
+            .padding()
+        }
+        .containerBackground(.blue.gradient, for: .navigation)
+        .navigationTitle("What's New")
+    }
+}
 
 #Preview {
     Setting()
