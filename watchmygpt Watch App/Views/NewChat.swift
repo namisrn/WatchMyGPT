@@ -26,7 +26,7 @@ struct NewChat: View {
                     ScrollView {
                         
                         // Vertikaler Stapel mit Abstand von 2 zwischen den Elementen
-                        VStack(spacing: 2) {
+                        LazyVStack(spacing: 2) {
                             
                             // Anfangsnachricht "How can I help you?"
                             Text("How can I help you?")
