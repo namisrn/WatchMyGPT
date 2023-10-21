@@ -23,7 +23,10 @@ class ChatViewModel: ObservableObject {
     
     // Kontext für die Nachrichten
     @Published var messageContext: [[String: String]] = [
-        ["role": "system", "content": "You are a helpful assistant."]
+        ["role": "system", "content": "You are a helpful assistant."],
+        ["role": "user", "content": "Who won the world series in 2020?"],
+        ["role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."],
+        ["role": "user", "content": "Where was it played?"]
     ]
     
     // Funktion zum Aufteilen von Text in Segmente
