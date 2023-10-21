@@ -14,10 +14,11 @@ struct Archive: View {
             List{
                 
                 Text("Coming Soon")
+                    .listItemTint(.blue)
+
             }
-            .containerBackground(.blue.gradient, for: .navigation)
+            //.containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Archive")
-            
             
             //Text("Testing phase, limited functionality.")
             Text("Coming Soon!")

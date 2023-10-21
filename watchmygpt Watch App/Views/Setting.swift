@@ -35,7 +35,10 @@ struct Setting: View {
                     // Überprüfe hier, ob ein Update verfügbar ist.
                     // Wenn ja, dann plane die Benachrichtigung.
                     self.viewModel.scheduleUpdateNotification()
+
                 }
+                .listItemTint(.blue)
+
                 
                 // NavigationLink für die vorhandenen Einstellungselemente
                 ForEach(settingItems) { item in
@@ -44,10 +47,11 @@ struct Setting: View {
                             Text(item.title)
                         }
                     }
+                    .listItemTint(.blue)
                     .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                 }
             }
-            .containerBackground(.blue.gradient, for: .navigation)
+            //.containerBackground(.blue.gradient, for: .navigation)
             .navigationTitle("Setting")
         }
         .listStyle(.plain)
@@ -58,7 +62,7 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.5 (2)")
+            Text("Version: 1.5 (3)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
@@ -97,6 +101,9 @@ struct wahtsNew: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 10){
+                Section(header: Text("Version 1.5:")){
+                    Text("- Minor Improvment")
+                }
                 Section(header: Text("Version 1.4:")){
                     Text("- New Chat Design")
                     Text("- Add Stack Stack")

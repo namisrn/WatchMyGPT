@@ -52,7 +52,7 @@ struct NewChat: View {
                                     Text(message)
                                         .multilineTextAlignment(.leading)
                                         .padding(10)
-                                        .background(Color.blue.opacity(0.5))
+                                        .background(Color.blue.opacity(0.6))
                                         .cornerRadius(10)
                                 }
                             }
@@ -95,12 +95,14 @@ struct NewChat: View {
                         ToolbarItem(placement: .bottomBar){
                             
                             // Eingabefeld für den Benutzer
-                            TextField("Start", text: $viewModel.userInput)
+                            //TextField("", text: $viewModel.userInput)
+                            TextField("", text: $viewModel.userInput, prompt: Text("Start").foregroundColor(.blue))
+                                .foregroundColor(Color.blue)
                                 .frame(width: 60)
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(20)
                                 .multilineTextAlignment(.center)
-                                .disabled(viewModel.isTyping)  // Deaktiviere das TextField, wenn GPT tippt
+                                .disabled(viewModel.isTyping) // Deaktiviere das TextField, wenn GPT tippt
                                 .submitLabel(.send)
                             
                             // Aktion, die beim Senden ausgeführt wird
@@ -119,7 +121,8 @@ struct NewChat: View {
                 
             }
             .edgesIgnoringSafeArea(.all)
-            .containerBackground(.blue.gradient, for: .navigation)
+            //.containerBackground(.blue.gradient, for: .navigation)
+
             .navigationTitle("New Chat")
         }
     }
