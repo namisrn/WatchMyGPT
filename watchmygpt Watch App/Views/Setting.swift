@@ -62,7 +62,7 @@ struct Setting: View {
 struct Info: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.5 (3)")
+            Text("Version: 1.5 (5)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
@@ -102,16 +102,18 @@ struct wahtsNew: View {
         ScrollView{
             VStack(alignment: .leading, spacing: 10){
                 Section(header: Text("Version 1.5:")){
-                    Text("- Minor Improvment")
+                    Text("- New: Widgets and Complications")
+                    Text("- Minor UI-improvement")
                 }
+                Divider()
                 Section(header: Text("Version 1.4:")){
                     Text("- New Chat Design")
                     Text("- Add Stack Stack")
-                    Text("- UI-Improvment and Bug Fixing")
+                    Text("- UI-improvement and Bug Fixing")
                 }
                 Divider()
                 Section(header: Text("Version 1.3:")){
-                    Text("- Improvment and Bug fixing")
+                    Text("- improvement and Bug fixing")
                 }
                 Divider()
                 Section(header: Text("Version 1.2:")){
