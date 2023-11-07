@@ -16,10 +16,10 @@ struct SettingItem: Identifiable {
 
 // Erstellen ein Array mit den Menüeinträgen und den zugehörigen Views
 let settingItems: [SettingItem] = [
-    SettingItem(title: "Info",  destinationView: AnyView(Info())),
+    SettingItem(title: "Version",  destinationView: AnyView(version())),
     SettingItem(title: "What's New", destinationView: AnyView(wahtsNew())),
+    SettingItem(title: "Auto-Update",  destinationView: AnyView(autoUpdate())),
     SettingItem(title: "Legal Notices",  destinationView: AnyView(LegalNotices())),
-
 ]
 
 struct Setting: View {
@@ -30,15 +30,6 @@ struct Setting: View {
         
         NavigationStack {
             List {
-                
-                Button("Check for Update") {
-                    // Überprüfe hier, ob ein Update verfügbar ist.
-                    // Wenn ja, dann plane die Benachrichtigung.
-                    self.viewModel.scheduleUpdateNotification()
-
-                }
-                .listItemTint(.blue)
-
                 
                 // NavigationLink für die vorhandenen Einstellungselemente
                 ForEach(settingItems) { item in
@@ -59,48 +50,31 @@ struct Setting: View {
 }
 
 
-struct Info: View {
+struct version: View {
     var body: some View {
         NavigationStack{
-            Text("Version: 1.5 (5)")
+            Text("Version: 1.6 (Build 8)")
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .edgesIgnoringSafeArea(.all)
-        .navigationTitle("Info")
+        .navigationTitle("Version")
         
         
     }
 }
 
 
-struct LegalNotices: View {
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                
-                Text("Privacy Policy")
-                    .font(.headline)
-                Text("No personal data is collected through this app.")
-                Divider()
-                Text("License")
-                    .font(.headline)
-                Text("All content is copyrighted and subject to licensing terms.")
-                Divider()
-                Text("Disclaimer")
-                    .font(.headline)
-                Text("We are not responsible for any damages that may arise from using this app.")
-            }
-            .padding()
-        }
-        .containerBackground(.blue.gradient, for: .navigation)
-        .navigationTitle("Legal Notices")
-    }
-}
+
 
 struct wahtsNew: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 10){
+                Section(header: Text("Version 1.6:")){
+                    Text("- New: Updated GPT 3.5 Turbo")
+                    Text("- Minor improvement")
+                }
+                Divider()
                 Section(header: Text("Version 1.5:")){
                     Text("- New: Widgets and Complications")
                     Text("- Minor UI-improvement")
@@ -127,6 +101,51 @@ struct wahtsNew: View {
         }
         .containerBackground(.blue.gradient, for: .navigation)
         .navigationTitle("What's New")
+    }
+}
+
+struct autoUpdate: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("Automatische Updates").font(.headline).padding(.bottom)
+                Text("To ensure your app stays up to date automatically:")
+                    .padding(.bottom)
+                
+                Text("1. open the Watch app on your iPhone.").padding(.top)
+                Text("2. go to the App Store section.").padding(.top)
+                Text("3. check if 'Automatic Updates' is turned on.").padding(.top)
+
+                                
+            }
+            .padding()
+        }
+        .containerBackground(.blue.gradient, for: .navigation)
+        .navigationTitle("Legal Notices")
+    }
+}
+
+struct LegalNotices: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                Text("Privacy Policy")
+                    .font(.headline)
+                Text("No personal data is collected through this app.")
+                Divider()
+                Text("License")
+                    .font(.headline)
+                Text("All content is copyrighted and subject to licensing terms.")
+                Divider()
+                Text("Disclaimer")
+                    .font(.headline)
+                Text("We are not responsible for any damages that may arise from using this app.")
+            }
+            .padding()
+        }
+        .containerBackground(.blue.gradient, for: .navigation)
+        .navigationTitle("Legal Notices")
     }
 }
 

@@ -11,7 +11,7 @@ struct NewChat: View {
     
     // ViewModel für Datenbindung
     @ObservedObject var viewModel = ChatViewModel()
-    
+
     // Hauptkörper der View
     var body: some View {
         
@@ -124,6 +124,8 @@ struct NewChat: View {
             //.containerBackground(.blue.gradient, for: .navigation)
 
             .navigationTitle("New Chat")
+        }.onAppear {
+            viewModel.resetChat() // Setze den Chat zurück, wenn die Ansicht erscheint
         }
     }
 }

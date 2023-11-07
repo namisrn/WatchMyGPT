@@ -30,7 +30,7 @@ class ChatViewModel: ObservableObject {
     ]
     
     // Funktion zum Aufteilen von Text in Segmente
-    func splitTextIntoSegments(text: String, maxWords: Int) -> [String] {
+    func splitTextIntoSegments(text: String, maxWords: Int = 200) -> [String] {
         let words = text.split(separator: " ")
         var segments: [String] = []
         var segment: [String] = []
@@ -56,12 +56,11 @@ class ChatViewModel: ObservableObject {
     
     // Funktion zum Senden von Segmenten an die Benutzeroberfläche
     func sendSegments(segments: [String]) {
-        for segment in segments {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.chatOutput += "\nGPT: \(segment)"
-            }
+        DispatchQueue.main.async {
+            self.chatOutput += segments.map { "\nGPT: \($0)" }.joined(separator: "")
         }
     }
+
     
     // Privatfunktion zum Abrufen des API-Schlüssels aus einer Konfigurationsdatei
     private func getAPIKey() -> String? {
@@ -96,7 +95,7 @@ class ChatViewModel: ObservableObject {
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.timeoutInterval = getTimeout()
         
-        let json: [String: Any] = ["model": "gpt-3.5-turbo", "messages": messageContext]
+        let json: [String: Any] = ["model": "gpt-3.5-turbo-1106", "messages": messageContext]
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
         
         let (data, _) = try await URLSession.shared.data(for: request)
@@ -167,16 +166,19 @@ class ChatViewModel: ObservableObject {
         let choices: [Choice]
     }
     
-    // Funktion zum Planen einer Benachrichtigung für Updates
-    func scheduleUpdateNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Update Available"
-        content.body = "A new version of the app is available. Update now!"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "updateNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    // Funktion zum Zurücksetzen des Chats
+    func resetChat() {
+        chatOutput = "How can I help you?" // oder leeren String "", wenn du keinen Starttext willst
+        userInput = ""
+        isLoading = false
+        errorMessage = nil
+        isTyping = false
+        connectionError = false
+        messageSent = false
+        lastUnansweredQuery = nil
+        messageContext = [
+            ["role": "system", "content": "You are a helpful assistant."]
+        ]
     }
+
 }
