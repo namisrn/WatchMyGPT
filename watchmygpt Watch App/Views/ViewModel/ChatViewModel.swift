@@ -73,16 +73,8 @@ class ChatViewModel: ObservableObject {
         return apiKey
     }
     
-    // Privatfunktion zum Abrufen des Timeout-Werts für API-Anfragen
-    private func getTimeout() -> TimeInterval {
-        var timeout: TimeInterval = 60.0
-        if let path = Bundle.main.path(forResource: "AppConfig", ofType: "plist") {
-            if let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
-                timeout = dict["API_TIMEOUT"] as? TimeInterval ?? 60.0
-            }
-        }
-        return timeout
-    }
+    // Konstante für den API-Timeout-Wert
+    private let apiTimeout: TimeInterval = 60.0
     
     // Asynchrone Funktion zum Senden einer API-Anfrage
     private func sendAsyncRequest() async throws -> ChatResponse {
@@ -93,8 +85,8 @@ class ChatViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.timeoutInterval = getTimeout()
-        
+        request.timeoutInterval = apiTimeout
+
         let json: [String: Any] = ["model": "gpt-3.5-turbo-1106", "messages": messageContext]
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
         
